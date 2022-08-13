@@ -2,8 +2,10 @@ package com.example.movies.repository
 
 import com.example.movies.api.ApiService
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class TvShowRepositoryImpl @Inject constructor(
+@Singleton
+class TvShowsRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : TvShowsRepository {
 
