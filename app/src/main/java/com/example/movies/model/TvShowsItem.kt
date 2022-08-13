@@ -1,6 +1,6 @@
 package com.example.movies.model
 
-data class TVShowsResponseItem(
+data class TvShowsItem(
 
     val id: Int,
     val image: Image,
