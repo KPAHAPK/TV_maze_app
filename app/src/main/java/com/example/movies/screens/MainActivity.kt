@@ -1,46 +1,46 @@
 package com.example.movies.screens
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.movies.adapter.TvShowAdapter
+import androidx.appcompat.app.AppCompatActivity
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.movies.R
 import com.example.movies.databinding.ActivityMainBinding
-import com.example.movies.viewmodel.MainViewModel
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels()
-    private lateinit var tvShowAdapter: TvShowAdapter
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
+
+    private val navigator = AppNavigator(this, R.id.fragment_container)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
-        setUpRv()
+        if (savedInstanceState == null) {
+            router.newRootScreen(Screens.MainScreen())
+        }
     }
 
-    private fun setUpRv() {
-        tvShowAdapter = TvShowAdapter()
-        binding.rvTvShows.apply {
-            layoutManager = GridLayoutManager(
-                this@MainActivity,2,
-                GridLayoutManager.VERTICAL,
-                false
-            )
-            adapter = tvShowAdapter
-            setHasFixedSize(true)
-        }
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        navigatorHolder.setNavigator(navigator)
+    }
 
-        viewModel.responseTvShow.observe(this){ listTvShows ->
-            tvShowAdapter.tvShows = listTvShows
-        }
-
+    override fun onPause() {
+        navigatorHolder.removeNavigator()
+        super.onPause()
     }
 }

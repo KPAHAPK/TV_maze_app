@@ -1,4 +1,4 @@
-package com.example.movies.screens
+package com.example.movies.screens.detailsscreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.movies.R
 
-class MainFragment : Fragment() {
+class DetailsFragment : Fragment() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -16,11 +17,17 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
     companion object {
-        fun newInstance() = MainFragment()
+        const val ARG_PARAM_MOVIE_ID = "ARG_PARAM_MOVIE_ID"
+        @JvmStatic
+        fun newInstance(movieId: Int) =
+            DetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_PARAM_MOVIE_ID, movieId)
+                }
+            }
     }
 }

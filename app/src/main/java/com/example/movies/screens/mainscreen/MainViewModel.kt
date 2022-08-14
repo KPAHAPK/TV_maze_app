@@ -1,4 +1,4 @@
-package com.example.movies.viewmodel
+package com.example.movies.screens.mainscreen
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,7 +10,6 @@ import com.example.movies.repository.TvShowsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 
 @HiltViewModel
 class MainViewModel @Inject
