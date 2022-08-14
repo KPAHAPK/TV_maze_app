@@ -1,17 +1,14 @@
 package com.example.movies.screens.mainscreen
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.movies.R
-import com.example.movies.adapter.TvShowAdapter
 import com.example.movies.databinding.FragmentMainBinding
+import com.example.movies.screens.mainscreen.adapter.TvShowAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,15 +23,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRv()
-        initClick()
-    }
-
-    private fun initClick() {
-
     }
 
     private fun setUpRv() {
-        tvShowAdapter = TvShowAdapter()
+        tvShowAdapter = TvShowAdapter { tvShowsItem ->
+            viewModel.routeToDetailsScreen(tvShowsItem)
+        }
+
         binding.rvTvShows.apply {
             layoutManager = GridLayoutManager(
                 this@MainFragment.context, 2,

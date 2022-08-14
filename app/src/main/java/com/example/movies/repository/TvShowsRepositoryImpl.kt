@@ -9,6 +9,6 @@ class TvShowsRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : TvShowsRepository {
 
-    override suspend fun getTvShows() = apiService.getTvShows()
+    override suspend fun getMovies() = apiService.getTvShows()
 
 }

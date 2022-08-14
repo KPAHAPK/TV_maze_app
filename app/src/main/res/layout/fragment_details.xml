@@ -1,14 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screens.detailsscreen.DetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/section_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="poster, title, director, director_label"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/movie_title"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toStartOf="@id/poster"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/banner"
+            app:layout_goneMarginEnd="16dp" />
+
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="@id/content_end"
+            app:layout_constraintTop_toBottomOf="@id/banner"
+            tools:srcCompat="@tools:sample/avatars" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/director_label"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Dirrector:"-->
+<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
+<!--            app:layout_constraintStart_toStartOf="@id/content_start"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/title"-->
+<!--            android:visibility="gone"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/director"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Peter Jackson"-->
+<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"-->
+<!--            app:layout_constrainedWidth="true"-->
+<!--            app:layout_constraintBaseline_toBaselineOf="@id/director_label"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/poster"-->
+<!--            app:layout_constraintHorizontal_bias="0"-->
+<!--            app:layout_constraintStart_toEndOf="@id/director_label"-->
+<!--            android:visibility="gone"/>-->
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/title_section_bottom_barrier"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="title,poster" />
+
+        <TextView
+            android:id="@+id/descriptions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/movie_description"
+            app:layout_constraintEnd_toEndOf="@id/content_end"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/title_section_bottom_barrier" />
+
+        <TextView
+            android:id="@+id/actor_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Actor"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/descriptions"
+            android:visibility="gone"/>
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/actor_flow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:constraint_referenced_ids="actor1,actor2,actor3,actor4"
+            app:flow_horizontalBias="0.0"
+            app:flow_horizontalGap="8dp"
+            app:flow_horizontalStyle="packed"
+            app:flow_verticalGap="8dp"
+            app:flow_verticalStyle="packed"
+            app:flow_wrapMode="chain"
+            app:layout_constraintEnd_toEndOf="@id/content_end"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/actor_label"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/actor1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f4a"
+            android:text="sadfsajd sadjflks" />
+
+        <TextView
+            android:id="@+id/actor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f4a"
+            android:text="sadfsajd sadjflks" />
+
+        <TextView
+            android:id="@+id/actor3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f4a"
+            android:text="sadfsajd sadjflks" />
+
+        <TextView
+            android:id="@+id/actor4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f4a"
+            android:text="sadfsajd sadjflks" />
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Button2"
+            app:layout_constraintEnd_toStartOf="@id/button3"
+            app:layout_constraintStart_toEndOf="@id/button1"
+            app:layout_constraintTop_toBottomOf="@id/actor_flow"
+            app:layout_goneMarginEnd="0dp"
+            app:layout_goneMarginStart="0dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/content_start"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintGuide_begin="16dp"
+            android:orientation="vertical"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/content_end"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintGuide_end="16dp"
+            android:orientation="vertical"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="button1,button2,button3"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Button3"
+            app:layout_constraintEnd_toEndOf="@id/content_end"
+            app:layout_constraintStart_toEndOf="@id/button2"
+            app:layout_constraintTop_toBottomOf="@id/actor_flow"
+            app:layout_goneMarginEnd="0dp"
+            app:layout_goneMarginStart="0dp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Button1"
+            app:layout_constraintEnd_toStartOf="@id/button2"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/actor_flow"
+            app:layout_goneMarginEnd="0dp"
+            app:layout_goneMarginStart="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

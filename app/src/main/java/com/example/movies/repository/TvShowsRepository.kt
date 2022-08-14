@@ -1,8 +1,8 @@
 package com.example.movies.repository
 
-import com.example.movies.model.TvShowsResponse
+import com.example.movies.model.MovieResponse
 import retrofit2.Response
 
 interface TvShowsRepository {
-    suspend fun getTvShows(): Response<TvShowsResponse>
+    suspend fun getMovies(): Response<MovieResponse>
 }
