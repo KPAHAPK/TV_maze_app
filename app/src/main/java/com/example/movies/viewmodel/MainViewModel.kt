@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class TvShowsViewModel @Inject
+class MainViewModel @Inject
 constructor(
     private val tvShowsRepository: TvShowsRepository
 ) : ViewModel() {
